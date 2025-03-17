@@ -1,0 +1,44 @@
+name: Prepare Deployment Package
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml -DskipTests
+
+      # 배포 패키지 생성
+      - name: Generate deployment package
+        run: |
+          mkdir -p deploy
+          cp target/*.jar deploy/application.jar
+          
+          # 배포 스크립트 생성
+          echo '#!/bin/bash' > deploy/deploy.sh
+          echo 'echo "This is a test deployment script"' >> deploy/deploy.sh
+          echo 'echo "Application would start here"' >> deploy/deploy.sh
+          echo 'echo "JAR file: application.jar"' >> deploy/deploy.sh
+          chmod +x deploy/deploy.sh
+          
+          ls -la deploy
+
+      # 배포 패키지를 아티팩트로 저장
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy-package
+          path: deploy
