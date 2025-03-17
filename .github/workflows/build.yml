@@ -25,9 +25,9 @@ jobs:
       - name: List build directory
         run: ls -la build/libs
 
-      # 아티팩트 저장 경로도 변경
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: application-jar
-          path: target/*.jar
+#      # 아티팩트 저장 경로도 변경
+#      - name: Upload build artifact
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: application-jar
+#          path: target/*.jar
