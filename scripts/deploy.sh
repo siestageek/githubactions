@@ -7,7 +7,8 @@ DEPLOY_LOG="$APP_DIR/deploy.log"
 APPLICATION_LOG="$APP_DIR/application.log"
 
 # 애플리케이션 디렉토리 확인
-# mkdir -p $APP_DIR
+#mkdir -p $APP_DIR
+#mv /home/ubuntu/application.jar $APP_DIR
 
 echo "===== Deployment started at $(date) =====" >> $DEPLOY_LOG
 
