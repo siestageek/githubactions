@@ -22,8 +22,8 @@ jobs:
         run: mvn -B package --file pom.xml -DskipTests
 
       # 빌드 결과물 확인
-      - name: List build directory
-        run: ls -la build/libs
+      - name: List target directory
+        run: ls -la target
 
 #      # 아티팩트 저장 경로도 변경
 #      - name: Upload build artifact
