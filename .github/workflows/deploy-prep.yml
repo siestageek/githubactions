@@ -38,7 +38,7 @@ jobs:
 
       # 배포 패키지를 아티팩트로 저장
       - name: Upload deployment package
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           name: deploy-package
           path: deploy
