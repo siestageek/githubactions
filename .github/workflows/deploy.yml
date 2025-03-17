@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "deploy/*"
-          target: "/home/${{ secrets.EC2_USERNAME }}"
+          target: "/home/app/${{ secrets.EC2_USERNAME }}"
           strip_components: 1
 
       # SSH로 EC2에 접속하여 배포 스크립트 실행
@@ -48,6 +48,6 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/${{ secrets.EC2_USERNAME }}
+            cd /home/app/${{ secrets.EC2_USERNAME }}
             chmod +x deploy.sh
             ./deploy.sh

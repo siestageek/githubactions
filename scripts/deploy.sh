@@ -6,10 +6,10 @@ JAR_FILE="$APP_DIR/application.jar"
 DEPLOY_LOG="$APP_DIR/deploy.log"
 APPLICATION_LOG="$APP_DIR/application.log"
 
-echo "===== Deployment started at $(date) =====" >> $DEPLOY_LOG
-
 # 애플리케이션 디렉토리 확인
 mkdir -p $APP_DIR
+
+echo "===== Deployment started at $(date) =====" >> $DEPLOY_LOG
 
 # 실행 중인 애플리케이션 PID 확인
 CURRENT_PID=$(pgrep -f $JAR_FILE)
